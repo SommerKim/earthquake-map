@@ -1,16 +1,5 @@
-// function createMap()
-
-// function createFeatures(response) {
-
-
-// }
-
-// d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(createFeatures);
-
-
 // Store our API endpoint inside queryUrl
-var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
-
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
   // Once we get a response, send the data.features object to the createFeatures function
@@ -19,8 +8,6 @@ d3.json(queryUrl).then(function(data) {
 
 function createFeatures(earthquakeData) {
 
-    console.log(earthquakeData);
-    
   // Define a function we want to run once for each feature in the features array
   // Give each feature a popup describing the place and time of the earthquake
   function onEachFeature(feature, layer) {
@@ -33,8 +20,6 @@ function createFeatures(earthquakeData) {
   var earthquakes = L.geoJSON(earthquakeData, {
     onEachFeature: onEachFeature
   });
-
-  console.log(earthquakes);
 
   // Sending our earthquakes layer to the createMap function
   createMap(earthquakes);
@@ -73,9 +58,9 @@ function createMap(earthquakes) {
   // Create our map, giving it the streetmap and earthquakes layers to display on load
   var myMap = L.map("map", {
     center: [
-      37.09, -95.71
+      27.09, -102.71
     ],
-    zoom: 5,
+    zoom: 3,
     layers: [streetmap, earthquakes]
   });
 
